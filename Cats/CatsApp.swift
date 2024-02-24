@@ -1,17 +1,15 @@
-//
-//  CatsApp.swift
-//  Cats
-//
-//  Created by Andrew Stoddart on 22/02/2024.
-//
-
+import ComposableArchitecture
 import SwiftUI
 
 @main
 struct CatsApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  let store = StoreOf<CatsListFeature>(initialState: CatsListFeature.State()) {
+    CatsListFeature()
+  }
+
+  var body: some Scene {
+    WindowGroup {
+      CatsListView(store: store)
     }
+  }
 }

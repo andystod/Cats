@@ -14,6 +14,10 @@
 		49DF41732B88012400733D64 /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF41722B88012400733D64 /* CatsTests.swift */; };
 		49DF417D2B88012400733D64 /* CatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF417C2B88012400733D64 /* CatsUITests.swift */; };
 		49DF417F2B88012400733D64 /* CatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF417E2B88012400733D64 /* CatsUITestsLaunchTests.swift */; };
+		49DF418C2B88014F00733D64 /* CatsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF418B2B88014F00733D64 /* CatsListFeature.swift */; };
+		49DF418F2B8801D100733D64 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 49DF418E2B8801D100733D64 /* ComposableArchitecture */; };
+		49DF41932B89298E00733D64 /* CatsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF41922B89298E00733D64 /* CatsClient.swift */; };
+		49DF41962B8A847900733D64 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF41952B8A847900733D64 /* Cat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,9 @@
 		49DF41782B88012400733D64 /* CatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DF417C2B88012400733D64 /* CatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsUITests.swift; sourceTree = "<group>"; };
 		49DF417E2B88012400733D64 /* CatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		49DF418B2B88014F00733D64 /* CatsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsListFeature.swift; sourceTree = "<group>"; };
+		49DF41922B89298E00733D64 /* CatsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsClient.swift; sourceTree = "<group>"; };
+		49DF41952B8A847900733D64 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DF418F2B8801D100733D64 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +102,9 @@
 		49DF41602B88012300733D64 /* Cats */ = {
 			isa = PBXGroup;
 			children = (
+				49DF41942B8A846C00733D64 /* Models */,
+				49DF41912B89297B00733D64 /* Clients */,
+				49DF41902B88034D00733D64 /* Features */,
 				49DF41612B88012300733D64 /* CatsApp.swift */,
 				49DF41632B88012300733D64 /* ContentView.swift */,
 				49DF41652B88012400733D64 /* Assets.xcassets */,
@@ -127,6 +138,30 @@
 			path = CatsUITests;
 			sourceTree = "<group>";
 		};
+		49DF41902B88034D00733D64 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				49DF418B2B88014F00733D64 /* CatsListFeature.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		49DF41912B89297B00733D64 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				49DF41922B89298E00733D64 /* CatsClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		49DF41942B8A846C00733D64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49DF41952B8A847900733D64 /* Cat.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +178,9 @@
 			dependencies = (
 			);
 			name = Cats;
+			packageProductDependencies = (
+				49DF418E2B8801D100733D64 /* ComposableArchitecture */,
+			);
 			productName = Cats;
 			productReference = 49DF415E2B88012300733D64 /* Cats.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 49DF41552B88012300733D64;
+			packageReferences = (
+				49DF418D2B8801D100733D64 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 49DF415F2B88012300733D64 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,7 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DF41932B89298E00733D64 /* CatsClient.swift in Sources */,
 				49DF41642B88012300733D64 /* ContentView.swift in Sources */,
+				49DF41962B8A847900733D64 /* Cat.swift in Sources */,
+				49DF418C2B88014F00733D64 /* CatsListFeature.swift in Sources */,
 				49DF41622B88012300733D64 /* CatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +474,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +504,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +634,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49DF418D2B8801D100733D64 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49DF418E2B8801D100733D64 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DF418D2B8801D100733D64 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49DF41562B88012300733D64 /* Project object */;
 }
