@@ -45,6 +45,7 @@ struct CatDetailsFeature {
         return .none
 
       case .fetchCatResponse(.failure(let error)):
+        print("fetchCatResponse error: \(error)") // TODO
         state.isLoading = false
         state.cat = nil
         return .none
@@ -74,17 +75,24 @@ struct CatDetailsView: View {
         Text(store.state.catId)
 
         if let cat = store.state.cat {
+          ForEach(cat.tags, id: \.self) { tag in
+            Text("Tag: \(tag)")
+          }
           if let mimetype = cat.mimetype {
             Text("Mime Type: \(mimetype)")
           }
           if let size = cat.size {
             Text("Size: \(size)")
           }
-          ForEach(cat.tags, id: \.self) { tag in
-            Text("Tag: \(tag)")
+          if let createdAt = cat.createdAt {
+            Text("createdAt: \(createdAt)")
+          }
+          if let editedAt = cat.editedAt {
+            Text("editedAt: \(editedAt)")
           }
         }
       }
+      .navigationTitle("Cat Details")
     }
     .onAppear {
       store.send(.onAppear)

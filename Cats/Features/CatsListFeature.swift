@@ -76,6 +76,7 @@ struct CatsListView: View {
             }
           }
         }
+        .navigationTitle("Cats")
       } destination: { store in
         CatDetailsView(store: store)
       }
