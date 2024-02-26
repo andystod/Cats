@@ -12,15 +12,14 @@ extension CatsClient: DependencyKey {
     fetchAllCats: {
       let (data, response) = try await URLSession.shared
         .data(from: URL(string: "https://cataas.com/api/cats")!)
-
-      try await Task.sleep(for: .seconds(2))
-
-      return [Cat(id: "af423")]
+//      try await Task.sleep(for: .seconds(1))
+      let cats = try JSONDecoder().decode([Cat].self, from: data)
+      return cats
     },
 
     fetchCatById: { id in
       let (data, response) = try await URLSession.shared
-        .data(from: URL(string: "https://cataas.com/cat/\(id)?width=50&height=50")!)
+        .data(from: URL(string: "https://cataas.com/cat/\(id)?json=true")!)
       let cat = try JSONDecoder().decode(Cat.self, from: data)
       return cat
     }

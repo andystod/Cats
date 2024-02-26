@@ -1,3 +1,7 @@
+// Note this would be broken into separate when
+// the need arises (ie more content complication)
+
+
 import ComposableArchitecture
 import Foundation
 
@@ -7,10 +11,12 @@ struct CatsListFeature {
   struct State {
     var cats = [Cat]()
     var isLoading = false
+    var path = StackState<CatDetailsFeature.State>()
   }
   enum Action {
     case onAppear
     case fetchAllCatsResponse(Result<[Cat], Error>)
+    case path(StackAction<CatDetailsFeature.State, CatDetailsFeature.Action>)
   }
   @Dependency(\.catsClient) var catsClient
   var body: some ReducerOf<Self> {
@@ -35,7 +41,13 @@ struct CatsListFeature {
         state.cats = []
         state.isLoading = false
         return .none
+
+      case .path:
+        return .none
       }
+    }
+    .forEach(\.path, action: \.path) {
+      CatDetailsFeature()
     }
   }
 }
@@ -48,18 +60,24 @@ struct CatsListView: View {
 
   var body: some View {
     WithPerceptionTracking {
-      VStack {
-        if store.isLoading {
-          ProgressView()
-            .progressViewStyle(.circular)
-            .controlSize(.large)
-            .foregroundStyle(Color.red)
-        }
-        List {
-          ForEach(store.cats) { cat in
-            Text(cat.id)
+      NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+        VStack {
+          if store.isLoading {
+            ProgressView()
+              .progressViewStyle(.circular)
+              .controlSize(.large)
+              .foregroundStyle(Color.red)
+          }
+          List {
+            ForEach(store.cats) { cat in
+              NavigationLink(state: CatDetailsFeature.State(catId: cat.id)) {
+                Text(cat.id)
+              }
+            }
           }
         }
+      } destination: { store in
+        CatDetailsView(store: store)
       }
     }
     .onAppear {
